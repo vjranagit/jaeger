@@ -1,0 +1,33 @@
+# Binaries
+/jaeger-toolkit
+*.exe
+*.dll
+*.so
+*.dylib
+/bin/
+/dist/
+
+# Test binary and coverage
+*.test
+*.out
+coverage.txt
+coverage.html
+
+# Go workspace
+go.work
+go.work.sum
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+/tmp/
+*.tmp

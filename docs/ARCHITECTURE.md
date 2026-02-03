@@ -292,3 +292,61 @@ func (s *MyStrategy) Generate() ([]runtime.Object, error) {
 ### Batch Processing
 
 - Default batch size: 1024 spans
+- Default timeout: 1 second
+- Configurable via HCL
+
+### Resource Usage
+
+- One goroutine per exporter
+- One goroutine per processor
+- Minimal memory allocation (object pooling for future optimization)
+
+## Security
+
+### Credentials
+
+- Environment variable expansion: `${env.ES_PASSWORD}`
+- Kubernetes secrets injection (deployment mode)
+- No plaintext passwords in configuration
+
+### TLS
+
+- Configurable TLS for all network communication
+- Certificate validation
+- mTLS support
+
+## Observability
+
+### Self-monitoring
+
+- Internal metrics using Prometheus format
+- Structured logging with slog
+- OpenTelemetry tracing for the collector itself
+
+### Health Checks
+
+- Readiness probe: All receivers started
+- Liveness probe: Heartbeat check
+
+## Future Enhancements
+
+### Pipeline
+
+- [ ] Additional receivers (StatsD, Prometheus scraping)
+- [ ] Advanced processors (tail-based sampling, resource detection)
+- [ ] More exporters (OTLP, Prometheus remote write)
+- [ ] Hot configuration reload
+
+### Deployment
+
+- [ ] GitOps integration (Flux/ArgoCD ApplicationSet generator)
+- [ ] Helm chart generation
+- [ ] Multi-cluster deployment
+- [ ] Custom resource definitions (optional operator mode)
+
+### Performance
+
+- [ ] Object pooling for span allocation
+- [ ] Zero-copy protocol transformations
+- [ ] Compression support
+- [ ] Load shedding strategies
